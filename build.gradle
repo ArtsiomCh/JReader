@@ -1,0 +1,45 @@
+import org.jetbrains.intellij.tasks.RunIdeTask
+
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.4.18'
+}
+
+group 'com.github.artsiomch'
+version '1.2'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+//    version '2019.3.4'
+    localPath 'C:\\Users\\artem\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-U\\ch-0\\201.6487.11'
+    plugins += 'java'
+    plugins += 'PsiViewer:201-SNAPSHOT'
+
+}
+patchPluginXml {
+    sinceBuild 191
+    untilBuild 999
+    changeNotes """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
+
+task runIC_201(type: RunIdeTask){
+    ideDirectory 'C:\\Users\\artem\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-C\\ch-0\\201.7223.91'
+}
+
+task runIC_193(type: RunIdeTask){
+    ideDirectory 'C:\\Users\\artem\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-C\\ch-0\\\\193.6911.18'
+}
+
+tasks.withType(RunIdeTask).forEach {task -> task.dependsOn(prepareSandbox)}
