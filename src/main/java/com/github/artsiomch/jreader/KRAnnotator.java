@@ -17,6 +17,8 @@ public class KRAnnotator implements Annotator {
         JRUtils.markPrivate(annotationHolder);
       } else if (psiElement.textMatches("public")) {
         JRUtils.markPublic(annotationHolder);
+      } else if (psiElement.textMatches("override")) {
+        JRUtils.markOverride(annotationHolder);
       }
     } else if (psiElement.getParent() instanceof KtNameReferenceExpression
         && psiElement.textMatches("Deprecated")) {

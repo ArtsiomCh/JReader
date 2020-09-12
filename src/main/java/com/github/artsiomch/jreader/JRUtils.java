@@ -23,9 +23,12 @@ public class JRUtils {
   private static final TextAttributes PRIVATE =
       createTextAttributesKey(
           Color.decode("#299999"), null, DefaultLanguageHighlighterColors.KEYWORD);
+  private static final TextAttributes OVERRIDE =
+      createTextAttributesKey(
+          null, null, DefaultLanguageHighlighterColors.METADATA);
   private static final TextAttributes DEPRECATED =
       createTextAttributesKey(
-          null, Color.decode(/*"#1B0D0D"*/ "#270F0F"), DefaultLanguageHighlighterColors.METADATA);
+          null, Color.decode("#270F0F"), DefaultLanguageHighlighterColors.METADATA);
 
   @NotNull
   private static TextAttributes createTextAttributesKey(
@@ -51,6 +54,13 @@ public class JRUtils {
     annotationHolder
         .newSilentAnnotation(HighlightSeverity.INFORMATION)
         .enforcedTextAttributes(PRIVATE)
+        .create();
+  }
+
+  static void markOverride(@NotNull AnnotationHolder annotationHolder) {
+    annotationHolder
+        .newSilentAnnotation(HighlightSeverity.INFORMATION)
+        .enforcedTextAttributes(OVERRIDE)
         .create();
   }
 
