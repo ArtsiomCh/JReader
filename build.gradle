@@ -2,11 +2,12 @@ import org.jetbrains.intellij.tasks.RunIdeTask
 
 plugins {
     id 'java'
+//    id 'org.jetbrains.kotlin.jvm' version "1.3.0"
     id 'org.jetbrains.intellij' version '0.4.18'
 }
 
 group 'com.github.artsiomch'
-version '1.2'
+version '1.3'
 
 sourceCompatibility = 1.8
 
@@ -20,22 +21,24 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-//    version '2019.3.4'
-    localPath 'C:\\Users\\artem\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-U\\ch-0\\201.6487.11'
+    version '2020.2'
+//    localPath 'C:\\Users\\artem\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-U\\ch-0\\201.6487.11'
     plugins += 'java'
-    plugins += 'PsiViewer:201-SNAPSHOT'
+    plugins += 'Kotlin'
+    plugins += 'PsiViewer:202-SNAPSHOT'
 
 }
 patchPluginXml {
     sinceBuild 191
     untilBuild 999
     changeNotes """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
+      1.3 - Kotlin support
+      1.2 - Initial public release
+      """
 }
 
 task runIC_201(type: RunIdeTask){
-    ideDirectory 'C:\\Users\\artem\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-C\\ch-0\\201.7223.91'
+    ideDirectory 'C:\\Users\\artem\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-C\\ch-0\\201.6487.11'
 }
 
 task runIC_193(type: RunIdeTask){

@@ -4,7 +4,7 @@
     <vendor email="achapialiou@gmail.com" url="https://github.com/ArtsiomCh/JReader">Artsiom Chapialiou</vendor>
 
     <description><![CDATA[
-    Helps visually separate <code>public</code>, <code>private</code> and <code>abstract</code> keywords in java source. <br>
+    Helps visually separate <code>public</code>, <code>private</code> and <code>abstract</code> keywords in java/kotlin source. <br>
     For <code>abstract</code> keywords also shows marks on the right scrollbar to easily navigate there in large java files. <br>
     Planing to provide possibility of customisation of fonts and colors. <br>
     Also generification of highlighting rules could be done using regex search rules.
@@ -15,6 +15,7 @@
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.java</depends>
+    <depends optional="true" config-file="withKotlin.xml">org.jetbrains.kotlin</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
