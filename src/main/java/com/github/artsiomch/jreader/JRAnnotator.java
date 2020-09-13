@@ -10,7 +10,7 @@ public class JRAnnotator implements Annotator {
   public void annotate(@NotNull PsiElement psiElement, @NotNull AnnotationHolder annotationHolder) {
     if (psiElement instanceof PsiKeyword) {
       if (psiElement.textMatches("abstract")) {
-        JRUtils.markAbstract(psiElement, annotationHolder);
+        JRUtils.markAbstract(annotationHolder);
       } else if (psiElement.textMatches("public")) {
         JRUtils.markPublic(annotationHolder);
       } else if (psiElement.textMatches("private")) {

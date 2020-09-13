@@ -13,10 +13,12 @@ public class KRAnnotator implements Annotator {
     if (psiElement.getParent() == null) return;
 
     if (psiElement.getParent() instanceof KtDeclarationModifierList) {
-      if (psiElement.textMatches("private")) {
-        JRUtils.markPrivate(annotationHolder);
+      if (psiElement.textMatches("abstract")) {
+        JRUtils.markAbstract(annotationHolder);
       } else if (psiElement.textMatches("public")) {
         JRUtils.markPublic(annotationHolder);
+      } else if (psiElement.textMatches("private")) {
+        JRUtils.markPrivate(annotationHolder);
       } else if (psiElement.textMatches("override")) {
         JRUtils.markOverride(annotationHolder);
       }

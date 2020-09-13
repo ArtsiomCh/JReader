@@ -24,8 +24,7 @@ public class JRUtils {
       createTextAttributesKey(
           Color.decode("#299999"), null, DefaultLanguageHighlighterColors.KEYWORD);
   private static final TextAttributes OVERRIDE =
-      createTextAttributesKey(
-          null, null, DefaultLanguageHighlighterColors.METADATA);
+      createTextAttributesKey(null, null, DefaultLanguageHighlighterColors.METADATA);
   private static final TextAttributes DEPRECATED =
       createTextAttributesKey(
           null, Color.decode("#270F0F"), DefaultLanguageHighlighterColors.METADATA);
@@ -64,11 +63,11 @@ public class JRUtils {
         .create();
   }
 
-  static void markAbstract(
-      @NotNull PsiElement psiElement, @NotNull AnnotationHolder annotationHolder) {
+  static void markAbstract(@NotNull AnnotationHolder annotationHolder) {
     annotationHolder
-        .createInfoAnnotation(psiElement, "")
-        .setEnforcedTextAttributes(JRUtils.ABSTRACT);
+        .newSilentAnnotation(HighlightSeverity.INFORMATION)
+        .enforcedTextAttributes(ABSTRACT)
+        .create();
   }
 
   static void markDeprecated(
