@@ -14,9 +14,12 @@ import java.awt.*;
 
 public class JRUtils {
 
-  private static final TextAttributes ABSTRACT =
-      createTextAttributesKey(
-          Color.decode("#FF0CEA"), null, DefaultLanguageHighlighterColors.KEYWORD);
+  private static final TextAttributesKey ABSTRACT_KEY =
+      // hack to force show stripe on scrollbar
+      TextAttributesKey.createTextAttributesKey(
+          "abstract",
+          createTextAttributesKey(
+              Color.decode("#FF0CEA"), null, DefaultLanguageHighlighterColors.KEYWORD));
   private static final TextAttributes PUBLIC =
       createTextAttributesKey(
           Color.decode("#00CC1D"), null, DefaultLanguageHighlighterColors.KEYWORD);
@@ -65,8 +68,8 @@ public class JRUtils {
 
   static void markAbstract(@NotNull AnnotationHolder annotationHolder) {
     annotationHolder
-        .newSilentAnnotation(HighlightSeverity.INFORMATION)
-        .enforcedTextAttributes(ABSTRACT)
+        .newSilentAnnotation(HighlightSeverity.WEAK_WARNING)
+        .textAttributes(ABSTRACT_KEY)
         .create();
   }
 
